@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fakta & Suara — Sorotan: Korupsi, Kebocoran Data, Dibungkam</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2300e7f0'/%3E%3Cstop stop-color='%23a855f7' offset='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect rx='28' ry='28' width='128' height='128' fill='url(%23g)'/%3E%3Cpath d='M28 78c22-10 36-36 60-44 6-2 12 2 11 9-3 22-27 45-50 53-9 3-18-4-21-12z' fill='white' opacity='.9'/%3E%3C/svg%3E">
+
+  <style>
+    :root{
+      --bg:#071018; --card:#0f1420cc; --text:#e8eef6; --muted:#9aa4b2;
+      --accent1:#00e7f0; --accent2:#a855f7; --glass: rgba(255,255,255,0.06);
+    }
+    :root[data-theme="light"]{
+      --bg:#f5f7fb; --card:#ffffffd9; --text:#0c1220; --muted:#566173; --glass: rgba(12,18,32,0.04);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:"Plus Jakarta Sans",system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+
+    /* layout */
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    .nav{position:sticky;top:0;z-index:6;backdrop-filter:blur(8px);background:linear-gradient( to right, rgba(15,20,32,0.7), rgba(15,20,32,0.5));border-bottom:1px solid rgba(255,255,255,0.06)}
+    :root[data-theme="light"] .nav{background:linear-gradient(to right,#ffffffc4,#ffffffb0);border-color:rgba(0,0,0,0.04)}
+    .nav-inner{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:12px 28px}
+
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:40px;height:40px;border-radius:12px;background:conic-gradient(from 180deg at 50% 50%,var(--accent1),var(--accent2));box-shadow:0 6px 30px rgba(168,85,247,0.12)}
+    .title{font-weight:800;letter-spacing:.4px}
+    .subtitle{font-size:12px;color:var(--muted)}
+
+    .actions{display:flex;gap:10px;align-items:center}
+    .btn{border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text);padding:10px 14px;border-radius:12px;font-weight:600;display:inline-flex;gap:10px;align-items:center;cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg,var(--accent1),var(--accent2));border:none;color:#071018}
+
+    /* hero */
+    .hero{margin-top:22px;border-radius:18px;padding:22px;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--card),var(--card));border:1px solid rgba(255,255,255,0.04);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
+    :root[data-theme="light"] .hero{box-shadow:0 12px 30px rgba(10,10,10,0.04)}
+
+    .hero h1{margin:0;font-size:clamp(26px,3vw,36px)}
+    .hero p{color:var(--muted);margin:10px 0 0}
+
+    .toolbar{display:flex;gap:12px;align-items:center;margin-top:18px}
+    .search{flex:1 1 360px;display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:var(--glass)}
+    .search input{flex:1;border:none;outline:none;background:transparent;color:var(--text);font-weight:600}
+
+    .pillset{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);cursor:pointer}
+    .chip.active{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#071018;border:none}
+
+    /* grid */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:22px}
+    .card{grid-column:span 12;padding:18px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.04);position:relative;overflow:hidden}
+    @media(min-width:720px){.card{grid-column:span 6}}
+    @media(min-width:1024px){.card{grid-column:span 4}}
+
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .badge{font-size:12px;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,0.04),transparent);border:1px solid rgba(255,255,255,0.06);font-weight:700}
+    .meta{font-size:12px;color:var(--muted);display:flex;gap:10px;align-items:center}
+    .headline{font-weight:800;margin:12px 0 8px}
+    .desc{color:var(--text);opacity:0.95;margin:0 0 12px}
+
+    .link{display:inline-flex;gap:10px;align-items:center;text-decoration:none;font-weight:700}
+    .link span{background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+    /* expanded details */
+    .details{border-top:1px dashed rgba(255,255,255,0.03);padding-top:12px;margin-top:12px;font-size:13px;color:var(--muted);display:none}
+    .details.visible{display:block}
+    .facts{display:flex;flex-direction:column;gap:6px}
+    .fact{display:flex;gap:8px;align-items:flex-start}
+    .fact b{min-width:100px;font-weight:700;color:var(--text)}
+
+    /* digital side panel */
+    .digital-panel{position:fixed;right:22px;bottom:22px;z-index:30;width:280px;border-radius:14px;padding:14px;background:linear-gradient(180deg,rgba(8,16,24,0.9),rgba(8,10,18,0.75));border:1px solid rgba(255,255,255,0.04);box-shadow:0 18px 50px rgba(0,0,0,0.6);backdrop-filter:blur(6px)}
+    :root[data-theme="light"] .digital-panel{background:linear-gradient(180deg,#ffffff,#ffffffcc);color:var(--text)}
+    .digital-panel h4{margin:0 0 8px;font-size:14px}
+    .stat{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.03)}
+    .stat:last-child{border-bottom:0}
+    .stat .num{font-weight:800;font-size:18px}
+    .stream{height:6px;border-radius:999px;background:linear-gradient(90deg,var(--accent1),var(--accent2));overflow:hidden;margin-top:10px}
+
+    /* micro animations */
+    .glow{position:absolute;inset:-40%;background:conic-gradient(from 90deg,rgba(255,255,255,0.02),rgba(255,255,255,0.06),transparent);filter:blur(80px);animation:rotate 18s linear infinite;pointer-events:none}
+    @keyframes rotate{to{transform:rotate(360deg)}}
+
+    /* empty & footer */
+    .empty{opacity:.75;border:1px dashed rgba(255,255,255,0.04);padding:26px;border-radius:12px;text-align:center}
+    .footer{margin:40px 0 12px;color:var(--muted);text-align:center}
+
+    /* small */
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;border:1px solid rgba(255,255,255,0.06);padding:3px 6px;border-radius:6px;background:transparent}
+    .chip[aria-pressed="true"]{outline:2px solid rgba(0,0,0,0.06)}
+
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner container">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="title">New INews</div>
+          <div class="subtitle">Sorotan tajam: Korupsi • Kebocoran Data • Dibungkam</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="themeToggle" class="btn" title="Toggle tema">🌓 <span style="margin-left:6px">Mode</span></button>
+        <button id="shareBtn" class="btn primary" title="Bagikan">🔗 <span style="margin-left:6px">Bagikan</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <div class="glow" aria-hidden="true"></div>
+      <h1>Sorotan Berita: <span style="background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent">Fakta Terkini & Data</span></h1>
+      <p>Kurasi ringkas berdasar laporan detik.com. Setiap kartu menyertakan sumber asli, tanggal, tag, dan rangkuman yang lebih terstruktur — agar pembaca dapat cepat memahami dampak dan konteks.</p>
+
+      <div class="toolbar">
+        <label class="search" for="q">🔎 <input id="q" type="search" placeholder="Cari judul, ringkasan, atau tag… (contoh: ASABRI, Allianz, Jabar)" autocomplete="off"> <kbd class="kbd">/</kbd></label>
+
+        <div class="pillset" role="tablist" aria-label="Filter kategori">
+          <button class="chip active" data-filter="all" role="tab" aria-selected="true">Semua</button>
+          <button class="chip" data-filter="korupsi" role="tab">Korupsi</button>
+          <button class="chip" data-filter="kebocoran-data" role="tab">Kebocoran Data</button>
+          <button class="chip" data-filter="kebebasan-bersuara" role="tab">Dibungkam</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="grid" class="grid" aria-live="polite"></section>
+    <div id="empty" class="empty" style="display:none">Tidak ada hasil. Coba kata kunci lain atau reset filter.</div>
+
+  </main>
+
+  <footer class="footer container">
+    © <span id="y"></span> INews Inisial R <strong>sumber : detik.com</strong>. Tekan <span class="kbd">/</span> untuk fokus pencarian.
+  </footer>
+
+  <!-- digital floating panel -->
+  <aside class="digital-panel" role="complementary" aria-label="Ringkasan data">
+    <h4>Ringkasan Data Cepat</h4>
+    <div class="stat"><div>Total artikel</div><div id="stat-articles" class="num">0</div></div>
+    <div class="stat"><div>Perkiraan data terpengaruh</div><div id="stat-affected" class="num">—</div></div>
+    <div class="stat"><div>Terakhir diperbarui</div><div id="stat-updated" class="num">—</div></div>
+    <div class="stream" aria-hidden="true"></div>
+  </aside>
+
+  <div id="toast" style="position:fixed;right:20px;bottom:22px;background:#0d1117cc;color:#fff;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);box-shadow:0 10px 30px rgba(0,0,0,0.6);opacity:0;transform:translateY(8px);transition:all .22s"></div>
+
+  <script>
+  (function(){
+    // ----- data (dipertahankan dari input user, diperkaya struktur) -----
+    const articles = [
+      { id: "kpk-haji-tersangka", category: "korupsi", badge: "KORUPSI", title: "KPK janji segera umumkan tersangka kasus dugaan korupsi kuota haji", date: "19 Agu 2025", source: "detikNews", url: "https://news.detik.com/berita/d-8069355/kpk-janji-segera-umumkan-tersangka-kasus-korupsi-kuota-haji", summary: "KPK terus mengusut dugaan korupsi kuota haji Kemenag periode 2024 dan menyatakan pengumuman tersangka akan dilakukan secepatnya.", tag: ["KPK","Haji","Kemenag"] },
+
+      { id: "kpk-geledah-haji", category: "korupsi", badge: "KORUPSI", title: "Penggeledahan di 4 lokasi terkait perkara kuota haji", date: "20 Agu 2025", source: "detikNews", url: "https://news.detik.com/berita/d-8070168/kpk-geledah-4-lokasi-terkait-kasus-korupsi-kuota-haji", summary: "Tim KPK melakukan penggeledahan di sejumlah lokasi dalam rangkaian penyidikan dugaan korupsi kuota haji 2024.", tag: ["KPK","Penggeledahan"] },
+
+      { id: "asabri-10-korporasi", category: "korupsi", badge: "KORUPSI", title: "ASABRI: sidang perdana 10 tersangka korporasi digelar 29 Agustus", date: "29 Agu 2025", source: "detikNews", url: "https://news.detik.com/berita/d-8074089/sidang-perdana-10-tersangka-korporasi-kasus-korupsi-asabri-digelar-29-agustus", summary: "PN Jakpus menjadwalkan sidang perdana 10 korporasi dalam perkara korupsi PT ASABRI.", tag: ["ASABRI","Pengadilan"] },
+
+      { id: "csr-bi-ojk-dpr", category: "korupsi", badge: "KORUPSI", title: "2 anggota DPR tersangka korupsi dana CSR BI–OJK", date: "Agu 2025", source: "detikNews", url: "https://news.detik.com/berita/d-8071259/2-anggota-dpr-tersangka-korupsi-csr-bi-ojk-belum-ditahan-ini-kata-kpk", summary: "KPK mengumumkan Satori dan Heri Gunawan sebagai tersangka pada perkara dugaan korupsi penyaluran CSR BI dan OJK.", tag: ["DPR","CSR","KPK"] },
+
+      { id: "allianz-life-breach", category: "kebocoran-data", badge: "KEBOCORAN DATA", title: "Kronologi data nasabah & karyawan Allianz Life dibobol", date: "Juli 2025", source: "detikFinance", url: "https://finance.detik.com/berita-ekonomi-bisnis/d-8035975/kronologi-data-nasabah-karyawan-allianz-life-dibobol", summary: "Allianz Life melaporkan insiden siber yang berdampak pada pencurian data pribadi sekitar 1,4 juta nasabah dan karyawan.", tag: ["Allianz","Siber","Privasi"] },
+
+      { id: "jabar-46juta-klaim", category: "kebocoran-data", badge: "KEBOCORAN DATA", title: "Klaim 4,6 juta data warga Jabar dikuasai hacker", date: "10 Jul 2025", source: "detikJabar", url: "https://www.detik.com/jabar/berita/d-8031297/hacker-klaim-kuasai-data-pribadi-4-6-juta-warga-jawa-barat", summary: "Akun anonim ‘DigitalGhostt’ mengklaim menguasai 4,6 juta data penduduk Jabar. Pemerintah daerah menegaskan investigasi tengah berjalan.", tag: ["Jawa Barat","Klaim","Dark Web"] },
+
+      { id: "jabar-penjelasan-tak-bocor", category: "kebocoran-data", badge: "KEBOCORAN DATA", title: "Pemprov Jabar pastikan tidak ada kebocoran dari server resmi", date: "Juli 2025", source: "detikJabar", url: "https://www.detik.com/jabar/berita/d-8032736/pemprov-jabar-pastikan-tak-ada-kebocoran-data", summary: "Pemprov Jabar menyatakan data yang beredar bukan berasal dari sistem resmi; dugaan pencatutan nama dan logo institusi.", tag: ["Klarifikasi","Pemerintah Daerah"] },
+
+      { id: "jakarta-hoaks-500rb", category: "kebocoran-data", badge: "KEBOCORAN DATA", title: "Viral 500 ribu data dijual—Pemprov DKI: hoaks", date: "8 Agu 2025", source: "detikNews", url: "https://news.detik.com/berita/d-8051569/viral-500-ribu-data-warga-disebut-dicuri-dan-dijual-pemprov-jakarta-hoax", summary: "Diskominfotik DKI via Jalahoaks menegaskan tidak ada kebocoran data kependudukan di server Dukcapil DKI; informasi diklasifikasi sebagai hoaks.", tag: ["DKI Jakarta","Hoaks","Dukcapil"] },
+
+      { id: "abraham-samad-podcast", category: "kebebasan-bersuara", badge: "DIBUNGKAM?", title: "Abraham Samad diperiksa polisi soal podcast: sebut ada pembungkaman", date: "13 Agu 2025", source: "detikNews", url: "https://news.detik.com/berita/d-8058611/diperiksa-polisi-soal-ijazah-jokowi-abraham-samad-ungkap-gegara-podcast", summary: "Mantan Ketua KPK memenuhi panggilan Polda Metro Jaya. Ia menyatakan pemanggilan terkait podcast-nya bernilai kriminalisasi dan pembungkaman kebebasan berekspresi.", tag: ["Kebebasan Bersuara","Hukum"] }
+    ];
+
+    // ----- helpers -----
+    const $grid = document.getElementById('grid');
+    const $empty = document.getElementById('empty');
+    const $q = document.getElementById('q');
+    const $chips = Array.from(document.querySelectorAll('.chip'));
+    const toast = document.getElementById('toast');
+    const y = document.getElementById('y');
+    y.textContent = new Date().getFullYear();
+
+    // theme
+    const root = document.documentElement;
+    const THEME_KEY = 'fv-theme';
+    const saved = localStorage.getItem(THEME_KEY);
+    if(saved) root.setAttribute('data-theme', saved);
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') || 'dark';
+      const next = cur === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem(THEME_KEY, next);
+    });
+
+    // share
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+      const payload = {title: document.title, text: 'Sorotan berita dari detik.com', url: location.href};
+      try{ if(navigator.share) await navigator.share(payload); else{ await navigator.clipboard.writeText(payload.url); showToast('Tautan disalin ke clipboard'); } }catch(e){}
+    });
+
+    // formatting helpers
+    function escapeHTML(s){ return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
+    function parseIndoDate(s){
+      if(!s) return new Date(0);
+      const map = {Jan:0,Feb:1,Mar:2,Apr:3,Mei:4,Jun:5,Jul:6,Agu:7,Sep:8,Okt:9,Nov:10,Des:11,'Juli':6,'Agustus':7,'Agu':7};
+      const p = s.split(' ');
+      if(p.length===3) return new Date(parseInt(p[2],10), map[p[1]]||0, parseInt(p[0],10));
+      if(p.length===2) return new Date(parseInt(p[1],10), map[p[0]]||0, 1);
+      return new Date(0);
+    }
+
+    // extract numeric mentions (like 1,4 juta) and convert to integer estimate
+    function extractAffected(text){
+      // look for patterns like '1,4 juta', '4,6 juta', '500 ribu' (case-insensitive)
+      const norm = (text||'').toLowerCase();
+      let total = 0;
+      const mJuta = norm.match(/([0-9]+(?:[\.,][0-9]+)?)\s*juta/);
+      const mRibu = norm.match(/([0-9]+(?:[\.,][0-9]+)?)\s*ribu/);
+      if(mJuta){ total += Math.round(parseFloat(mJuta[1].replace(',', '.')) * 1_000_000); }
+      if(mRibu){ total += Math.round(parseFloat(mRibu[1].replace(',', '.')) * 1_000); }
+      return total || null;
+    }
+
+    // render articles
+    function render(list){
+      $grid.innerHTML = '';
+      if(!list.length){ $empty.style.display = 'block'; return; }
+      $empty.style.display = 'none';
+
+      list.sort((a,b) => parseIndoDate(b.date) - parseIndoDate(a.date));
+
+      for(const a of list){
+        const el = document.createElement('article');
+        el.className = 'card';
+        el.setAttribute('data-category', a.category);
+
+        // try to extract an affected estimate from summary
+        const affected = extractAffected(a.summary);
+
+        el.innerHTML = `
+          <div class="card-head">
+            <span class="badge">${escapeHTML(a.badge)}</span>
+            <div class="meta"><span aria-label="Tanggal">${escapeHTML(a.date||'')}</span> <span aria-hidden="true">•</span> <span>${escapeHTML(a.source)}</span></div>
+          </div>
+          <h3 class="headline">${escapeHTML(a.title)}</h3>
+          <p class="desc">${escapeHTML(a.summary)}</p>
+
+          <div class="details" id="det-${a.id}">
+            <div class="facts">
+              <div class="fact"><b>Sumber</b><div>${escapeHTML(a.source)} — <a href="${a.url}" target="_blank" rel="noopener noreferrer">Lihat artikel</a></div></div>
+              <div class="fact"><b>Tanggal</b><div>${escapeHTML(a.date)}</div></div>
+              <div class="fact"><b>Tag</b><div>${a.tag.map(t => `<span style=\"padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,0.04);margin-right:6px;font-weight:700;display:inline-block\">${escapeHTML(t)}</span>`).join('')}</div></div>
+              ${affected ? `<div class=\"fact\"><b>Estimasi terdampak</b><div>${new Intl.NumberFormat('id-ID').format(affected)} entri (berdasarkan teks laporan)</div></div>` : ''}
+              <div class="fact"><b>Ringkasan fakta</b><div class="muted">${escapeHTML(summarizeFacts(a))}</div></div>
+            </div>
+          </div>
+
+          <div style="margin-top:10px;display:flex;gap:10px;align-items:center;justify-content:space-between">
+            <a class="link" href="${a.url}" target="_blank" rel="noopener noreferrer"><span>Baca sumber di detik.com</span> ⟶</a>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="btn" data-action="toggle" data-target="det-${a.id}">Detail</button>
+              <button class="btn" data-action="copy" data-url="${a.url}">Salin tautan</button>
+            </div>
+          </div>
+        `;
+
+        $grid.appendChild(el);
+      }
+
+      // attach card button handlers
+      document.querySelectorAll('[data-action="toggle"]').forEach(btn => btn.addEventListener('click', e => {
+        const id = btn.dataset.target;
+        const d = document.getElementById(id);
+        if(d) d.classList.toggle('visible');
+      }));
+
+      document.querySelectorAll('[data-action="copy"]').forEach(btn => btn.addEventListener('click', async e => {
+        try{ await navigator.clipboard.writeText(btn.dataset.url); showToast('Tautan disalin ke clipboard'); }catch(e){ showToast('Gagal menyalin'); }
+      }));
+    }
+
+    // create a short factual summary from the article fields (avoid inventing new facts)
+    function summarizeFacts(a){
+      const parts = [];
+      if(a.tag && a.tag.length) parts.push('Topik: ' + a.tag.join(', '));
+      if(a.summary) parts.push(a.summary);
+      return parts.join(' — ');
+    }
+
+    // toast
+    function showToast(msg){ toast.textContent = msg; toast.style.opacity = '1'; toast.style.transform = 'translateY(0)'; setTimeout(()=>{ toast.style.opacity='0'; toast.style.transform='translateY(8px)'; },1800); }
+
+    // search & filter
+    let currentFilter = 'all';
+    function apply(){
+      const q = ($q.value||'').trim().toLowerCase();
+      const filtered = articles.filter(a => {
+        const byCat = currentFilter === 'all' || a.category === currentFilter;
+        if(!byCat) return false;
+        if(!q) return true;
+        return (a.title + ' ' + a.summary + ' ' + (a.tag||[]).join(' ')).toLowerCase().includes(q);
+      });
+      render(filtered);
+      updateStats(filtered);
+    }
+
+    $chips.forEach(ch => ch.addEventListener('click', e => {
+      $chips.forEach(c => { c.classList.remove('active'); c.setAttribute('aria-selected','false'); });
+      ch.classList.add('active'); ch.setAttribute('aria-selected','true');
+      currentFilter = ch.dataset.filter;
+      apply();
+    }));
+
+    $q.addEventListener('input', apply);
+    window.addEventListener('keydown', e => { if(e.key === '/' && document.activeElement !== $q){ e.preventDefault(); $q.focus(); } });
+
+    // initial render
+    render(articles);
+
+    // ----- digital panel stats -----
+    const statArticles = document.getElementById('stat-articles');
+    const statAffected = document.getElementById('stat-affected');
+    const statUpdated = document.getElementById('stat-updated');
+
+    function updateStats(list){
+      const all = list || articles;
+      statArticles.textContent = all.length;
+
+      // sum affected estimates from visible articles
+      let total = 0; let any = false;
+      for(const a of all){ const v = extractAffected(a.summary); if(v){ total += v; any = true; } }
+      statAffected.textContent = any ? new Intl.NumberFormat('id-ID').format(total) : '—';
+
+      // latest date
+      const latest = all.slice().sort((a,b)=> parseIndoDate(b.date)-parseIndoDate(a.date))[0];
+      statUpdated.textContent = latest ? latest.date : '—';
+    }
+
+    updateStats();
+
+    // accessibility: focus styles on chips
+    document.querySelectorAll('.chip').forEach(c => c.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' ') c.click(); }));
+
+    // safety note: don't invent facts — article summaries are shown as-is and link to original source
+  })();
+  </script>
+</body>
+</html>
