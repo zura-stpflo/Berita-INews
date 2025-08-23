@@ -726,6 +726,11 @@
   </style>
 </head>
 <body>
+    <script>
+/* Redirect jika tidak ada username */
+if (!sessionStorage.getItem('username')) location.href = '/';
+</script>
+
   <div class="loading-bar" id="loadingBar"></div>
   <div class="cursor-dot" id="cDot" aria-hidden="true"></div>
   <div class="cursor-ring" id="cRing" aria-hidden="true"></div>
