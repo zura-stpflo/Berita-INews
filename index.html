@@ -1,189 +1,74 @@
-<!doctype html>
-<html lang="id">
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Berita Digital — Login</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<style>
-  :root{
-    --bg1:#020617;--bg2:#0f172a;
-    --accent1:#34d399;--accent2:#3b82f6;
-    --glass:#ffffff0a;--border:#ffffff1a;--muted:#a5b4fc;
-  }
-  *{box-sizing:border-box;font-family:Inter, Poppins, system-ui, sans-serif}
-  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at top left,var(--bg1),var(--bg2));color:#e2e8f0}
-  .card{width:420px;max-width:95vw;padding:28px;border-radius:20px;background:linear-gradient(145deg,var(--glass),transparent);border:1px solid var(--border);backdrop-filter:blur(12px);box-shadow:0 20px 50px rgba(0,0,0,.65);animation:fadeIn .8s ease}
-  @keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
-  .brand{display:flex;gap:12px;align-items:center;margin-bottom:16px}
-  .logo{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:grid;place-items:center;font-weight:700;color:#0f172a;font-size:1rem}
-  h1{margin:0;font-size:1.35rem}
-  p.subtitle{margin:4px 0 14px;color:var(--muted);font-size:0.9rem}
-  label{display:block;margin-top:10px;font-size:0.85rem;color:#cbd5e1}
-  input{width:100%;padding:11px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);background:#1e293b;color:#e2e8f0;outline:none;font-size:0.92rem;transition:.2s}
-  input:focus{border-color:var(--accent1);box-shadow:0 0 0 2px rgba(52,211,153,.2)}
-  .row{display:flex;gap:10px;margin-top:14px}
-  .btn{flex:1;padding:11px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:600;transition:.2s}
-  .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#0f172a}
-  .btn-primary:hover{opacity:.9}
-  .btn-google{background:#fff;color:#111;display:flex;align-items:center;gap:10px;justify-content:center;padding:11px;font-size:0.9rem}
-  .links{display:flex;justify-content:space-between;margin-top:10px;font-size:0.85rem}
-  .links a{color:var(--accent2);cursor:pointer;text-decoration:none;transition:.2s}
-  .links a:hover{color:var(--accent1)}
-  .alert{margin-top:10px;padding:10px;border-radius:10px;font-size:0.88rem}
-  .alert.error{background:#dc26260d;color:#fca5a5;border:1px solid #dc26261a}
-  .alert.success{background:#16a34a0d;color:#86efac;border:1px solid #16a34a1a}
-  .otp{display:flex;gap:8px;justify-content:center;margin-top:12px}
-  .otp input{width:42px;height:46px;text-align:center;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:#1e293b;color:#e2e8f0;font-size:1.1rem}
-  .small{font-size:0.8rem;color:#94a3b8;margin-top:6px}
-  .telegram{position:fixed;right:18px;bottom:18px;background:#229ED9;color:#fff;border-radius:28px;padding:10px 14px;display:flex;gap:10px;align-items:center;box-shadow:0 6px 18px rgba(0,0,0,.35);font-size:0.9rem}
-  @media(max-width:520px){.card{padding:20px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerome - Downloader Regis & Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-  <section class="card" aria-labelledby="title">
-    <div class="brand">
-      <div class="logo">BD</div>
-      <div>
-        <h1 id="title">Berita Digital</h1>
-        <p class="subtitle">Akses aman dengan Email, Google & OTP</p>
-      </div>
-    </div>
-
-    <!-- login -->
-    <div id="view-login">
-      <label>Email</label>
-      <input id="loginEmail" type="email" placeholder="email@contoh.com">
-      <label>Password</label>
-      <input id="loginPass" type="password" placeholder="Password">
-      <div class="row"><button class="btn btn-primary" id="loginBtn">Masuk</button></div>
-
-      <div style="margin:14px 0">
-        <button class="btn btn-google" id="googleBtn"><img src="https://www.svgrepo.com/show/355037/google.svg" alt="" style="width:18px">Masuk dengan Google</button>
-      </div>
-
-      <div class="links">
-        <a id="toRegister">Daftar</a>
-        <a id="toForgot">Lupa Password?</a>
-      </div>
-      <div id="loginMsg"></div>
-    </div>
-
-    <!-- register -->
-    <div id="view-register" style="display:none">
-      <label>Email</label>
-      <input id="regEmail" type="email" placeholder="email@contoh.com">
-      <label>Password</label>
-      <input id="regPass" type="password" placeholder="Minimal 6 karakter">
-      <div class="row">
-        <button class="btn btn-primary" id="regBtn">Daftar</button>
-        <button class="btn" id="regCancel" style="background:#dc2626;color:#fff">Batal</button>
-      </div>
-      <div id="regMsg"></div>
-    </div>
-
-    <!-- forgot/OTP -->
-    <div id="view-forgot" style="display:none">
-      <label>Email terdaftar</label>
-      <input id="forgotEmail" type="email" placeholder="email@contoh.com">
-      <div class="row">
-        <button class="btn btn-primary" id="sendOtpBtn">Kirim OTP</button>
-        <button class="btn" id="forgotCancel" style="background:#dc2626;color:#fff">Batal</button>
-      </div>
-      <div id="forgotMsg"></div>
-
-      <div id="otpBox" style="display:none">
-        <p class="small">Masukkan 6-digit OTP (5 menit)</p>
-        <div class="otp" id="otpInputs">
-          <input maxlength="1" inputmode="numeric">
-          <input maxlength="1" inputmode="numeric">
-          <input maxlength="1" inputmode="numeric">
-          <input maxlength="1" inputmode="numeric">
-          <input maxlength="1" inputmode="numeric">
-          <input maxlength="1" inputmode="numeric">
+    <div class="container">
+        <div class="form-box login">
+            <form id="loginForm">
+                <h1>Login</h1>
+                <div class="input-box">
+                    <input type="text" id="loginUsername" placeholder="Username" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <div class="forgot-link">
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div id="loginMessage" class="message"></div>
+            </form>
         </div>
-        <div class="row" style="margin-top:10px">
-          <button class="btn btn-primary" id="verifyOtpBtn">Verifikasi</button>
-          <button class="btn" id="resendOtpBtn">Kirim Ulang</button>
+
+        <div class="form-box register">
+            <form id="registerForm">
+                <h1>Registration</h1>
+                <div class="input-box">
+                    <input type="text" id="regUsername" placeholder="Username" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="regPassword" placeholder="Password" required>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <div id="registerMessage" class="message"></div>
+            </form>
         </div>
-        <div id="otpTimer" class="small"></div>
-      </div>
+
+        <div class="toggle-box">
+            <div class="toggle-panel toggle-left">
+                <h1>Welcome Back!</h1>
+                <p>Don't have an account?</p>
+                <button class="btn register-btn">Register</button>
+            </div>
+
+            <div class="toggle-panel toggle-right">
+                <h1>Hello, Welcome!</h1>
+                <p>Already have an account?</p>
+                <button class="btn login-btn">Login</button>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <button class="telegram" onclick="window.open('https://t.me/zuraasukalc','_blank')">
-    <img src="https://www.svgrepo.com/show/452115/telegram.svg" alt="" style="width:20px">
-    <span id="tgStatus">Memuat...</span>
-  </button>
+    <!-- No Account Modal -->
+    <div id="noAccountModal" class="modal">
+        <div class="modal-content">
+            <h2>Account Not Found</h2>
+            <p>Akun anda belum terdaftar pada web kami. Harap registrasi terlebih dahulu.</p>
+            <button id="modalOkBtn" class="btn">OK</button>
+        </div>
+    </div>
 
-  <script src="https://cdn.emailjs.com/sdk/3.6.2/email.min.js"></script>
-  <script type="module">
-    // Konfigurasi
-    const FIREBASE = {
-      apiKey: "AIzaSyB6nyu3bhIFE-DXELdYEabFhTbv7m-GAag",
-  authDomain: "berita-digital-f572f.firebaseapp.com",
-  projectId: "berita-digital-f572f",
-  storageBucket: "berita-digital-f572f.firebasestorage.app",
-  messagingSenderId: "582743109286",
-  appId: "1:582743109286:web:2d8c9930a8a5a48c048e67",
-  measurementId: "G-LPFJ4K9FHM"
-    };
-    const EMAILJS_USER = "YOUR_EMAILJS_USER_ID";
-    const EMAILJS_SERVICE = "YOUR_EMAILJS_SERVICE_ID";
-    const EMAILJS_TEMPLATE = "YOUR_EMAILJS_TEMPLATE_ID";
-    try{ emailjs.init(EMAILJS_USER); }catch(e){}
-
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
-    const app = initializeApp(FIREBASE), auth = getAuth(app), google = new GoogleAuthProvider();
-
-    const views = {login:document.getElementById('view-login'), register:document.getElementById('view-register'), forgot:document.getElementById('view-forgot')};
-    const show = v => {Object.keys(views).forEach(k=>views[k].style.display=k===v?'block':'none');['loginMsg','regMsg','forgotMsg','otpTimer'].forEach(id=>document.getElementById(id).innerHTML='');}
-
-    document.getElementById('toRegister').onclick=()=>show('register');
-    document.getElementById('regCancel').onclick=()=>show('login');
-    document.getElementById('toForgot').onclick=()=>show('forgot');
-    document.getElementById('forgotCancel').onclick=()=>show('login');
-
-    const setMsg=(id,t,ok=false)=>document.getElementById(id).innerHTML=`<div class="alert ${ok?'success':'error'}">${t}</div>`;
-
-    // Register
-    document.getElementById('regBtn').onclick=async()=>{
-      const e=document.getElementById('regEmail').value.trim(),p=document.getElementById('regPass').value;
-      if(!e||!p) return setMsg('regMsg','Isi semua field');
-      if(p.length<6) return setMsg('regMsg','Password minimal 6 karakter');
-      try{await createUserWithEmailAndPassword(auth,e,p);setMsg('regMsg','Registrasi sukses',true);setTimeout(()=>location='/dashboard',700);}catch(err){setMsg('regMsg',err.message||'Gagal');}
-    };
-
-    // Login
-    document.getElementById('loginBtn').onclick=async()=>{
-      const e=document.getElementById('loginEmail').value.trim(),p=document.getElementById('loginPass').value;
-      if(!e||!p) return setMsg('loginMsg','Isi email & password');
-      try{await signInWithEmailAndPassword(auth,e,p);setMsg('loginMsg','Login sukses',true);setTimeout(()=>location='/dashboard',700);}catch(err){setMsg('loginMsg',err.message||'Gagal');}
-    };
-
-    // Google
-    document.getElementById('googleBtn').onclick=async()=>{
-      try{await signInWithPopup(auth,google);setMsg('loginMsg','Login Google sukses',true);setTimeout(()=>location='/dashboard',700);}catch(err){setMsg('loginMsg',err.message||'Gagal');}
-    };
-
-    // OTP
-    let otp=null, otpExpire=0, otpEmail='';
-    const OTP_TTL=300;
-    function startTimer(sec=OTP_TTL){const el=document.getElementById('otpTimer');clearInterval(el._i);const end=Date.now()+sec*1000;el._i=setInterval(()=>{const r=Math.max(0,Math.floor((end-Date.now())/1000));el.innerText=r<=0?(clearInterval(el._i),'OTP kedaluwarsa'):`OTP berlaku ${Math.floor(r/60)}m ${r%60}s`;},500);}
-    async function sendOtp(email){otp=String(Math.floor(100000+Math.random()*900000));otpExpire=Date.now()+OTP_TTL*1000;otpEmail=email;try{await emailjs.send(EMAILJS_SERVICE,EMAILJS_TEMPLATE,{to_email:email,otp_code:otp,site_name:'Berita Digital'});setMsg('forgotMsg',`OTP dikirim ke ${email}`,true);document.getElementById('otpBox').style.display='block';startTimer();}catch(err){setMsg('forgotMsg','Gagal kirim OTP');}}
-    document.getElementById('sendOtpBtn').onclick=()=>{const e=document.getElementById('forgotEmail').value.trim();if(!e)return setMsg('forgotMsg','Masukkan email');sendOtp(e);};
-    document.getElementById('resendOtpBtn').onclick=()=>{const e=document.getElementById('forgotEmail').value.trim();if(!e)return setMsg('forgotMsg','Masukkan email');sendOtp(e);};
-    document.getElementById('verifyOtpBtn').onclick=async()=>{const inputs=[...document.querySelectorAll('#otpInputs input')].map(i=>i.value.trim()).join('');if(inputs.length!==6)return setMsg('forgotMsg','Masukkan 6-digit OTP');if(!otp||Date.now()>otpExpire)return setMsg('forgotMsg','OTP kadaluwarsa');if(inputs!==otp)return setMsg('forgotMsg','OTP salah');try{await sendPasswordResetEmail(auth,otpEmail);setMsg('forgotMsg','OTP valid. Link reset dikirim.',true);show('login');otp=null;document.getElementById('otpBox').style.display='none';}catch(err){setMsg('forgotMsg','Gagal kirim link reset');}};
-
-    // OTP input UX
-    document.querySelectorAll('#otpInputs input').forEach((el,i,arr)=>{el.addEventListener('input',e=>{if(e.target.value.length>1)e.target.value=e.target.value[0];if(e.target.value&&i<arr.length-1)arr[i+1].focus();});el.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!e.target.value&&i>0)arr[i-1].focus();});});
-
-    // Telegram status simulasi
-    function tgStatus(){const h=new Date().getHours();document.getElementById('tgStatus').innerText=(h>=9&&h<22)?'Admin ONLINE':'Admin OFFLINE';}
-    tgStatus();setInterval(tgStatus,60000);
-
-    onAuthStateChanged(auth,u=>{if(u)setTimeout(()=>location='/dashboard',600)});
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
